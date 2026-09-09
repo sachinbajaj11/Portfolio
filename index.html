@@ -1,202 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sachin Bajaj | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        body {
-            background-color: black;
-            color: white;
-            overflow-x: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sachin Bajaj — Product Thinking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAFAF7;
+    --paper:#F3F1EA;
+    --ink:#1C1B18;
+    --ink-soft:#4A4740;
+    --gold:#B8862B;
+    --gold-deep:#8F6A20;
+    --sage:#5C6E5A;
+    --line:#DEDACD;
+    --line-strong:#C9C4B4;
+    --serif:'Source Serif 4', Georgia, serif;
+    --sans:'Inter', -apple-system, sans-serif;
+  }
 
-        /* Intro Screen */
-        .entry-logo {
-            text-align: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 50px;
-            font-weight: bold;
-            text-shadow: 0 0 20px rgb(23, 175, 25);
-            animation: fadeOut 3s linear forwards;
-        }
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; display: none; }
-        }
+  *{margin:0;padding:0;box-sizing:border-box;}
 
-        /* Navbar */
-        nav {
-            width: 100%;
-            height: 70px;
-            background: rgba(34, 34, 34, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            font-weight: bold;
-            box-shadow: 0 0 15px rgba(0, 255, 100, 0.5);
-        }
+  html{scroll-behavior:smooth;}
 
-        /* Main Section */
-        .main {
-            display: flex;
-            justify-content: center;
-            padding: 50px;
-            gap: 30px;
-            flex-direction: row;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
 
-        /* Profile Card */
-        .Profile {
-            width: 400px;
-            background: linear-gradient(135deg, #4f4f4f, #2d2d2d);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(34, 43, 30, 0.8);
-            transition: transform 0.4s, box-shadow 0.4s;
-        }
+  a{color:inherit;}
 
-        .Profile:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgb(82, 82, 82);
-        }
+  ::selection{background:var(--gold); color:var(--cream);}
 
-        .Profile img {
-            width: 250px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-        }
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 32px;
+  }
 
-        .name {
-            font-size: 40px;
-            font-weight: bold;
-            margin-top: 15px;
-            text-shadow: 0 0 10px rgba(230, 221, 226, 0.8);
-        }
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+  }
 
-        .Header {
-            font-size: 20px;
-            color: #ddd;
-            margin-top: 10px;
-            font-style: italic;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
-        }
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,250,247,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1040px; margin:0 auto; padding:18px 32px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-name{
+    font-family:var(--serif); font-weight:600; font-size:18px; letter-spacing:0.01em;
+  }
+  .nav-links{display:flex; gap:28px; font-size:14px; font-weight:500;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft); transition:color .15s;}
+  .nav-links a:hover{color:var(--gold-deep);}
+  @media (max-width:640px){ .nav-links{display:none;} }
 
-        /* Boxes */
-        .Boxes {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            width: 80%;
-        }
+  /* ===== HERO ===== */
+  header.hero{
+    padding:88px 0 72px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow-line{
+    font-size:14px; color:var(--sage); font-weight:500; margin-bottom:20px;
+  }
+  h1.hero-title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(34px, 5vw, 52px);
+    line-height:1.18;
+    max-width:780px;
+    letter-spacing:-0.01em;
+  }
+  .hero-title em{font-style:italic; color:var(--gold-deep);}
+  .hero-sub{
+    margin-top:22px;
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:600px;
+    line-height:1.65;
+  }
+  .hero-meta{
+    margin-top:36px;
+    display:flex; flex-wrap:wrap; gap:10px 14px;
+    font-size:14px;
+  }
+  .hero-meta a, .hero-meta span{
+    color:var(--ink-soft);
+  }
+  .hero-meta .dot{color:var(--line-strong);}
+  .hero-meta a{text-decoration:none; border-bottom:1px solid var(--line-strong); padding-bottom:1px;}
+  .hero-meta a:hover{border-color:var(--gold); color:var(--gold-deep);}
 
-        .box {
-            width: 300px;
-            height: 250px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
+  .stat-row{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+  }
+  .stat{
+    padding:24px 28px 4px 0;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{border-right:none;}
+  .stat-num{
+    font-family:var(--serif);
+    font-size:34px;
+    font-weight:600;
+    color:var(--gold-deep);
+    line-height:1;
+  }
+  .stat-label{
+    margin-top:8px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.45;
+  }
+  @media (max-width:700px){
+    .stat-row{grid-template-columns:1fr; }
+    .stat{border-right:none; border-bottom:1px solid var(--line); padding:20px 0;}
+  }
 
-        .box:hover {
-            transform: scale(1.05);
-        }
+  /* ===== SECTION SCAFFOLDING ===== */
+  section{
+    padding:80px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
 
-        a {
-            text-decoration: none;
-        }
+  .section-head{
+    display:flex; align-items:baseline; gap:16px;
+    margin-bottom:44px;
+  }
+  .section-num{
+    font-family:var(--serif); font-style:italic; color:var(--line-strong); font-size:20px;
+  }
+  h2.section-title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(24px,3vw,30px);
+    letter-spacing:-0.01em;
+  }
+  .section-intro{
+    font-size:16px; color:var(--ink-soft); max-width:620px; margin-bottom:40px; line-height:1.7;
+  }
 
-        .box-1 { background: linear-gradient(45deg, #5123b6, #090794); box-shadow: 0 0 20px #5123b6; }
-        .box-2 { background: linear-gradient(45deg, #980000, #ff0000); box-shadow: 0 0 20px #980000; }
-        .box-3 { background: linear-gradient(45deg, #e30139, #a90115); box-shadow: 0 0 20px #e30139; }
-        .box-4 { background: linear-gradient(45deg, #1cb201, #00be3f); box-shadow: 0 0 20px #1cb201; }
+  /* ===== ABOUT ===== */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:56px;
+  }
+  .about-lede{
+    font-family:var(--serif);
+    font-size:22px;
+    line-height:1.55;
+    color:var(--ink);
+  }
+  .about-lede .accent{color:var(--gold-deep); font-style:italic;}
+  .about-body p{margin-top:18px; color:var(--ink-soft); font-size:15.5px;}
+  .about-side{
+    border-left:1px solid var(--line);
+    padding-left:32px;
+  }
+  .principle{
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .principle:last-child{border-bottom:none;}
+  .principle-name{font-weight:600; font-size:14px; color:var(--gold-deep); margin-bottom:4px;}
+  .principle-desc{font-size:13.5px; color:var(--ink-soft); line-height:1.5;}
+  @media (max-width:800px){
+    .about-grid{grid-template-columns:1fr;}
+    .about-side{border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:28px;}
+  }
 
-        /* Particles */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-        }
+  /* ===== CASE STUDY: PIVOT (featured) ===== */
+  .case-featured{
+    background:var(--paper);
+    margin:0 -1000px;
+    padding:88px 1000px;
+    border-bottom:1px solid var(--line);
+  }
+  .case-tag{
+    display:inline-block;
+    font-size:12.5px; font-weight:600; color:var(--sage);
+    padding:5px 12px; border:1px solid var(--sage);
+    border-radius:2px;
+    margin-bottom:24px;
+  }
+  h2.case-title{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(26px,3.4vw,34px);
+    max-width:680px; line-height:1.3;
+    margin-bottom:16px;
+  }
+  .case-role{font-size:14.5px; color:var(--ink-soft); margin-bottom:48px;}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .main {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px;
-            }
-            .Boxes {
-                width: 100%;
-            }
-            .Profile {
-                width: 90%;
-            }
-        }
+  .pivot-flow{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:28px;
+    align-items:stretch;
+    margin:40px 0 48px;
+  }
+  .pivot-col{
+    background:var(--cream);
+    border:1px solid var(--line);
+    padding:28px;
+  }
+  .pivot-col.before{border-left:3px solid var(--line-strong);}
+  .pivot-col.after{border-left:3px solid var(--gold);}
+  .pivot-label{
+    font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:14px;
+  }
+  .pivot-col.after .pivot-label{color:var(--gold-deep);}
+  .pivot-big{
+    font-family:var(--serif); font-size:30px; font-weight:600; margin-bottom:6px;
+  }
+  .pivot-sub{font-size:14px; color:var(--ink-soft); line-height:1.5;}
+  .pivot-arrow{
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; color:var(--gold);
+    font-family:var(--serif); font-style:italic;
+  }
+  @media (max-width:700px){
+    .pivot-flow{grid-template-columns:1fr; }
+    .pivot-arrow{transform:rotate(90deg); padding:4px 0;}
+  }
 
-        @media (max-width: 320px){
-            .Profile{
-                width: 100%;
-                padding: 10px;
-            }
-        }
-    </style>
+  .case-narrative{max-width:680px;}
+  .case-step{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+  .case-step:first-of-type{border-top:1px solid var(--line);}
+  .step-label{
+    font-size:13px; font-weight:600; color:var(--gold-deep);
+    padding-top:2px;
+  }
+  .step-text{font-size:15px; color:var(--ink); line-height:1.65;}
+  .step-text strong{color:var(--ink); font-weight:600;}
+  @media (max-width:600px){
+    .case-step{grid-template-columns:1fr; gap:6px;}
+  }
+
+  .lp-tags{margin-top:36px; display:flex; flex-wrap:wrap; gap:8px;}
+  .lp-tag{
+    font-size:12.5px; font-weight:500; color:var(--sage);
+    padding:6px 12px; background:var(--cream); border:1px solid var(--line);
+  }
+
+  /* ===== CASE STUDY: EVA BHARAT ===== */
+  .case-plain{padding-top:0;}
+  .case-two-col{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:56px;
+  }
+  .case-plain .case-narrative{max-width:100%;}
+  .metric-block{
+    border-left:1px solid var(--line);
+    padding-left:28px;
+  }
+  .metric-item{margin-bottom:28px;}
+  .metric-num{font-family:var(--serif); font-size:28px; font-weight:600; color:var(--gold-deep); line-height:1.1;}
+  .metric-label{font-size:13px; color:var(--ink-soft); margin-top:4px; line-height:1.4;}
+  @media (max-width:800px){
+    .case-two-col{grid-template-columns:1fr;}
+    .metric-block{border-left:none; padding-left:0; display:flex; gap:32px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:24px;}
+  }
+
+  /* ===== BUILDS ===== */
+  .build-list{
+    display:flex; flex-direction:column;
+  }
+  .build{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:40px;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+  }
+  .build:last-child{border-bottom:1px solid var(--line);}
+  .build-name{
+    font-family:var(--serif); font-size:21px; font-weight:600;
+  }
+  .build-meta{font-size:13px; color:var(--sage); margin-top:6px; font-weight:500;}
+  .build-desc{font-size:15px; color:var(--ink-soft); line-height:1.65;}
+  .build-desc .use{color:var(--ink); font-weight:500;}
+  @media (max-width:700px){
+    .build{grid-template-columns:1fr; gap:10px;}
+  }
+
+  /* ===== SKILLS ===== */
+  .skill-table{width:100%; border-collapse:collapse;}
+  .skill-row{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    border-top:1px solid var(--line);
+    padding:18px 0;
+    gap:20px;
+  }
+  .skill-row:last-child{border-bottom:1px solid var(--line);}
+  .skill-name{font-weight:600; font-size:14.5px;}
+  .skill-proof{font-size:14.5px; color:var(--ink-soft);}
+  @media (max-width:600px){
+    .skill-row{grid-template-columns:1fr; gap:4px;}
+  }
+
+  /* ===== LEADERSHIP ===== */
+  .lead-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  .lead-item{border-left:2px solid var(--gold); padding-left:20px;}
+  .lead-title{font-weight:600; font-size:15.5px; margin-bottom:6px;}
+  .lead-desc{font-size:14.5px; color:var(--ink-soft); line-height:1.6;}
+  @media (max-width:700px){ .lead-grid{grid-template-columns:1fr; gap:28px;} }
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:64px 0 56px;
+    text-align:left;
+  }
+  .footer-title{
+    font-family:var(--serif); font-size:clamp(26px,3.5vw,36px); font-weight:500; max-width:520px; line-height:1.35;
+  }
+  .footer-links{
+    margin-top:32px; display:flex; gap:28px; flex-wrap:wrap; font-size:14.5px; font-weight:500;
+  }
+  .footer-links a{text-decoration:none; border-bottom:1px solid var(--line-strong); padding-bottom:2px;}
+  .footer-links a:hover{border-color:var(--gold); color:var(--gold-deep);}
+  .footer-note{margin-top:48px; font-size:13px; color:var(--line-strong);}
+
+</style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="entry-logo">Welcome To Sachin's Portfolio</div>
 
-    <section style="display: none;">
-        <div class="main">
-            <div class="Profile">
-                <img src="Sachin.png" alt="Sachin Bajaj">
-                <div class="name">Sachin Bajaj</div>
-                <div class="Header">A Web Developer who builds amazing websites.</div>
-            </div>
-            <div class="Boxes">
-                <a href="Resume.html"><div class="box box-1">Resume <i class="fas fa-file-alt"></i></div></a>
-                <a href="Projects.html"><div class="box box-2">Projects <i class="fas fa-code"></i></div></a>
-                <a href="Contact.html"><div class="box box-3">Contact <i class="fas fa-envelope"></i></div></a>
-                <a href="Github.html"><div class="box box-4">GitHub <i class="fab fa-github"></i></div></a>
-            </div>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-name">Sachin Bajaj</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#pivot">The Pivot</a>
+      <a href="#eva-bharat">Eva Bharat</a>
+      <a href="#builds">Builds</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow-line">Product Management</div>
+    <h1 class="hero-title">I ship, I talk to users, and I'm not afraid to say a product idea <em>was wrong.</em></h1>
+    <p class="hero-sub">Jaipur, India. Currently a Product Marketer at Eva Bharat, building tools daily, and still recovering from — and grateful for — a pivot that only happened because I trusted user data over my own attachment to an idea.</p>
+    <div class="hero-meta">
+      <span>Jaipur, Rajasthan</span><span class="dot">·</span>
+      <a href="mailto:bajajsachin100@gmail.com">bajajsachin100@gmail.com</a><span class="dot">·</span>
+      <a href="tel:+917023187244">+91 70231 87244</a><span class="dot">·</span>
+      <a href="https://www.linkedin.com/in/sachin-bajaj-a8874a298/" target="_blank">LinkedIn</a>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">21</div>
+        <div class="stat-label">one-on-one user interviews conducted at Eva Bharat — surfaced a UI bug that got fixed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">150%</div>
+        <div class="stat-label">app user growth (100 → 250) in a 3-day campaign at ₹21 per lead</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">designers use a tool I built for video-to-storyboard conversion, every day</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">How I think about product</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-lede">The most useful thing I've learned so far isn't a framework — it's noticing when I've fallen in love with <span class="accent">my own idea</span> instead of the user's problem.</p>
+        <div class="about-body">
+          <p>I started as a marketing intern who got promoted for turning user feedback into product decisions, not just campaign results. Since then I've solo-founded an app, watched it get real usage numbers that turned out to be hollow, re-read my own research with fresh eyes, and found the actual signal I'd missed the first time.</p>
+          <p>I'd rather run a scrappy, half-fake test with 15 real users than build the full version of something nobody asked for. That's the thread running through everything below — the failures included.</p>
         </div>
-    </section>
+      </div>
+      <div class="about-side">
+        <div class="principle">
+          <div class="principle-name">Customer Obsession</div>
+          <div class="principle-desc">21 user interviews at Eva Bharat, 30+ in-person interviews for Fitstreak, a WhatsApp tool designed around how shopkeepers already work — not how I wanted them to work.</div>
+        </div>
+        <div class="principle">
+          <div class="principle-name">Are Right, A Lot — and Say So When You're Not</div>
+          <div class="principle-desc">Fitstreak looked like a success at 300 users. Admitting only 12 were real, and that I'd been chasing my own idea, is the decision I'm most proud of.</div>
+        </div>
+        <div class="principle">
+          <div class="principle-name">Bias for Action</div>
+          <div class="principle-desc">Validated the diet-app pivot with a manually-run Wizard of Oz test on 15 users before writing a line of new product code.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- JavaScript -->
-    <script>
-        particlesJS("particles-js", {
-            "particles": { "number": { "value": 80 }, "size": { "value": 3 }, "move": { "attract": { "enable": true } } }
-        });
+  <div class="case-featured" id="pivot">
+    <div class="wrap" style="padding:0; margin:0; max-width:1040px;">
+      <span class="case-tag">Featured Case Study</span>
+      <h2 class="case-title">Fitstreak: building the wrong thing well, then finding the right thing</h2>
+      <div class="case-role">Solo Founder · Aug 2025 – Oct 2026 · Market research, product design, engineering, research re-analysis</div>
 
-        document.querySelector(".entry-logo").addEventListener("animationend", () => {
-            document.querySelector("section").style.display = "block";
-        });
-    </script>
+      <div class="pivot-flow">
+        <div class="pivot-col before">
+          <div class="pivot-label">What the numbers said</div>
+          <div class="pivot-big">300 users</div>
+          <div class="pivot-sub">Gym-to-gym growth from 21 surveys and ~30 in-person interviews. Looked like traction.</div>
+        </div>
+        <div class="pivot-arrow">→</div>
+        <div class="pivot-col after">
+          <div class="pivot-label">What was actually true</div>
+          <div class="pivot-big">12 users</div>
+          <div class="pivot-sub">Showed genuine daily engagement. No PMF, no monetization, high churn — I'd built for my idea of fitness, not theirs.</div>
+        </div>
+      </div>
+
+      <div class="case-narrative">
+        <div class="case-step">
+          <div class="step-label">The build</div>
+          <div class="step-text">Researched and built a workout-tracking fitness app, driving growth to <strong>300 users</strong> gym by gym. Pitched it at the EO GSEA Summit and reached the finals.</div>
+        </div>
+        <div class="case-step">
+          <div class="step-label">The signal I ignored</div>
+          <div class="step-text">Only <strong>12 users</strong> were genuinely engaging daily. I'd fallen in love with the workout idea instead of listening to what users actually needed — no product-market fit, no monetization path, high churn.</div>
+        </div>
+        <div class="case-step">
+          <div class="step-label">The re-analysis</div>
+          <div class="step-text">Instead of collecting new data to chase a new idea, I went back and <strong>re-read my own Fitstreak research</strong>. Users had been asking about diet, not workouts — a signal I'd missed the first time because I was attached to the original idea.</div>
+        </div>
+        <div class="case-step">
+          <div class="step-label">De-risking the pivot</div>
+          <div class="step-text">Before writing new product code, I ran a <strong>Wizard of Oz MVP with 15 users</strong> — manually creating AI-assisted diet plans by hand to simulate the product. It validated real demand and confirmed the pivot direction.</div>
+        </div>
+      </div>
+
+      <div class="lp-tags">
+        <span class="lp-tag">Customer Obsession</span>
+        <span class="lp-tag">Are Right, A Lot</span>
+        <span class="lp-tag">Bias for Action</span>
+        <span class="lp-tag">Dive Deep</span>
+        <span class="lp-tag">Ownership</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="case-plain" id="eva-bharat">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Eva Bharat — Product Marketer</h2>
+    </div>
+    <p class="section-intro">Promoted from Marketing Intern to Product Marketer after four months for turning user feedback into shipped product changes, not just campaign numbers. Apr 2026 – present.</p>
+
+    <div class="case-two-col">
+      <div class="case-narrative">
+        <div class="case-step">
+          <div class="step-label">The platform</div>
+          <div class="step-text">Owned app growth and user research for a DOOH (digital out-of-home) screen booking platform that lets businesses book ad screens in under a minute.</div>
+        </div>
+        <div class="case-step">
+          <div class="step-label">The growth push</div>
+          <div class="step-text">Launched Meta ads and influencer campaigns that grew app users from 100 to 250 in a 3-day window, at ₹21 per lead.</div>
+        </div>
+        <div class="case-step">
+          <div class="step-label">The research</div>
+          <div class="step-text">Ran <strong>21 one-on-one interviews</strong> to evaluate booking-flow usability. Surfaced a critical UI discoverability issue that was subsequently fixed — the finding that led to my promotion.</div>
+        </div>
+        <div class="case-step">
+          <div class="step-label">Now</div>
+          <div class="step-text">Leading the Ganesh Chaturthi campaign end-to-end: in-app placements, WhatsApp outreach, email marketing, and review generation across every channel.</div>
+        </div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-item">
+          <div class="metric-num">100→250</div>
+          <div class="metric-label">app users in a 3-day campaign window</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num">₹21</div>
+          <div class="metric-label">cost per lead</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num">21</div>
+          <div class="metric-label">user interviews → 1 critical bug fixed</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num">1</div>
+          <div class="metric-label">promotion, four months in</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="builds">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Things I've built that people actually use</h2>
+    </div>
+    <p class="section-intro">Side projects where the test wasn't "does it work," it was "does anyone open it twice."</p>
+
+    <div class="build-list">
+      <div class="build">
+        <div>
+          <div class="build-name">AI Video-to-Storyboard Connector</div>
+          <div class="build-meta">Built for Eva Bharat · Daily use by 5 designers</div>
+        </div>
+        <div class="build-desc">AI models like Claude can't natively watch video. I built a tool that converts short clips (≤30s) into a single 9-frame storyboard image so an AI model can interpret the video content. Deployed internally, where <span class="use">5 designers now use it daily</span> to speed up creative feedback loops.</div>
+      </div>
+      <div class="build">
+        <div>
+          <div class="build-name">WhatsApp Khata-to-Ledger Automation</div>
+          <div class="build-meta">Personal project</div>
+        </div>
+        <div class="build-desc">Small shop owners already keep accounts by hand in a khata notebook — asking them to adopt a new app is a real barrier. This tool lets them send a <span class="use">photo of the handwritten khata</span> over WhatsApp; the system auto-generates structured digital accounts, with voice-note corrections for any ambiguous entries. Meets users in their existing workflow instead of forcing migration.</div>
+      </div>
+      <div class="build">
+        <div>
+          <div class="build-name">Codebase Visualizer for AI-Generated Code</div>
+          <div class="build-meta">Personal tool · Daily use</div>
+        </div>
+        <div class="build-desc">Understanding a codebase by repeatedly querying an LLM is slow and expensive. Converts AI-generated code into a compact JSON representation plus an interactive chart / code-tree, so I can understand a codebase's structure without re-querying a model every time.</div>
+      </div>
+      <div class="build">
+        <div>
+          <div class="build-name">Guru — Interactive Tool-Learning System</div>
+          <div class="build-meta">Personal project · Prototype, PS1/JavaScript</div>
+        </div>
+        <div class="build-desc">Passive video tutorials don't teach muscle memory. Built a prototype that guides a user's cursor step-by-step through real software, teaching tool usage interactively instead of having them watch and forget.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Skills, with where they came from</h2>
+    </div>
+    <div class="skill-table">
+      <div class="skill-row">
+        <div class="skill-name">User research & interviews</div>
+        <div class="skill-proof">21 interviews at Eva Bharat, 30+ in-person interviews for Fitstreak, 21 Google Form surveys</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Wizard of Oz testing</div>
+        <div class="skill-proof">Manually simulated AI diet plans for 15 users to validate demand before building</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Growth & performance marketing</div>
+        <div class="skill-proof">Meta ads and influencer campaigns; 150% user growth at ₹21/lead; 22 influencer partnerships at Nothing Before Coffee</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Python, SQL, JavaScript</div>
+        <div class="skill-proof">Self-study plus applied in the Codebase Visualizer, Guru prototype, and Khata-to-Ledger automation</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Product roadmapping & Agile</div>
+        <div class="skill-proof">Independent Coursera study covering product lifecycle, roadmapping, and root causes of feature failure</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Tools: Figma, Jira, Notion, Claude Code, GPT</div>
+        <div class="skill-proof">Used across research synthesis, prototyping, and day-to-day product work at Eva Bharat</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Leadership, before any of this</h2>
+    </div>
+    <div class="lead-grid">
+      <div class="lead-item">
+        <div class="lead-title">Football Team Captain, Modern School Jaipur</div>
+        <div class="lead-desc">Led the team to its first-ever quarterfinal appearance in major inter-school competitions.</div>
+      </div>
+      <div class="lead-item">
+        <div class="lead-title">Top 50 of 300 startups, Startup Mahakumbh</div>
+        <div class="lead-desc">Pitched Clartalk, a debate platform, at an inter-school startup competition (Dec 2024).</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2 class="footer-title">If you're building something and need a product-minded builder on your team, I'd like to talk.</h2>
+    <div class="footer-links">
+      <a href="mailto:bajajsachin100@gmail.com">bajajsachin100@gmail.com</a>
+      <a href="tel:+917023187244">+91 70231 87244</a>
+      <a href="https://www.linkedin.com/in/sachin-bajaj-a8874a298/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-note">Jaipur, Rajasthan, India</div>
+  </footer>
+
+</div>
+
 </body>
 </html>
